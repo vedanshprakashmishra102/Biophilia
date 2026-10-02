@@ -489,3 +489,4 @@ else if (page === 'resources') initResources();
 else if (page === 'profile') initProfile();
 else initShared();
 import('./features.js').catch((e) => console.warn('features.js failed', e));
+import('./features2.js').catch((e) => console.warn('features2.js failed', e));
