@@ -37,7 +37,7 @@ async function shareSummary() {
 function downloadData() {
   const url = URL.createObjectURL(new Blob([exportData(state)], { type: 'application/json' }));
   const a = document.createElement('a');
-  a.href = url; a.download = 'ecosphere-data.json'; a.click();
+  a.href = url; a.download = `biophilia-report-${new Date().toISOString().slice(0, 10)}.json`; a.click();
   URL.revokeObjectURL(url);
   toast('Data exported!');
 }
