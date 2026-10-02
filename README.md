@@ -12,15 +12,6 @@ A lightweight, client-side website where users commit to and track small, high-i
 - **Profile & Settings** – Name, dark mode, export data, shareable impact summary
 - **Zero-friction onboarding** – Use as guest immediately; save name anytime
 
-## Tech Stack
-
-| Layer            | Choice                          |
-|------------------|---------------------------------|
-| Markup           | HTML5 (semantic)                |
-| Styling          | CSS3 (variables, Grid, Flexbox) |
-| Logic            | Vanilla JS (ES modules)         |
-| Persistence      | `localStorage`                  |
-| Hosting ready for| GitHub Pages / Netlify / Vercel |
 
 Edit the sources in `js/`, then run `sh build.sh` to regenerate `js/ecosphere.js` (the single classic script the pages load, so the site works even when opened by double-click). No other build step. Open `index.html` or deploy the folder as a static site.
 
@@ -67,7 +58,7 @@ ecosphere/
 - All data stays in the browser; export JSON anytime
 - Fully responsive; mobile nav hamburger included
 
-## Future Extensions
+## Future Extensions(self note)
 
 - Connect Supabase / Firebase for multi-device sync & community totals
 - PWA + push reminders
