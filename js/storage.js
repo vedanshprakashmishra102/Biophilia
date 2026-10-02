@@ -35,7 +35,10 @@ const DEFAULT_STATE = {
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
-
+const FZ = 'bio_freeze';
+export const getFreezes = () => +localStorage.getItem(FZ) || 0;
+function earnFreeze(streak) { if (streak % 7 === 0 && getFreezes() < 2) localStorage.setItem(FZ, getFreezes() + 1); }
+function spendFreeze() { const n = getFreezes(); if (n < 1) return false; localStorage.setItem(FZ, n - 1); return true; }
 export function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
