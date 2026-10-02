@@ -276,7 +276,7 @@ export const ARTICLES = [
     excerpt: 'Keep reusable bags, a stainless steel water bottle, and compact cutlery in your everyday bag.', time: '1 min', tags: ['waste'] },
   { id: 'a24', title: 'Rinse recyclables', category: 'Waste & Recycling', icon: '🧴',
     excerpt: 'Briefly rinse plastic, glass, and metal containers before placing them in recycling bins to avoid contaminating entire loads.', time: '1 min', tags: ['waste'] } 
-   ];
+];
   
 export const CATEGORIES = [
   'All',
