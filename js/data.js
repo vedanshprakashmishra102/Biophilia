@@ -236,8 +236,46 @@ export const ARTICLES = [
     excerpt: 'A simple barrel setup can water your plants for free and reduce runoff. Here\'s how to start.',
     time: '3 min',
     tags: ['water']
-  }
-];
+  },
+  /* ---------- Water Conservation ---------- */
+  { id: 'a9', title: 'Fix household leaks', category: 'Water Conservation', icon: '💧',
+    excerpt: 'A single dripping tap can waste hundreds of liters of water each month.', time: '1 min', tags: ['water'] },
+  { id: 'a10', title: 'Turn off the tap while brushing', category: 'Water Conservation', icon: '🪥',
+    excerpt: 'Keep the water running only when actively rinsing to save around 6 liters per minute.', time: '1 min', tags: ['water'] },
+  { id: 'a11', title: 'Reuse kitchen water', category: 'Water Conservation', icon: '🪴',
+    excerpt: 'Save the water used to wash fruits and vegetables and use it to water household plants.', time: '1 min', tags: ['water'] },
+  { id: 'a12', title: 'Take shorter showers', category: 'Water Conservation', icon: '🚿',
+    excerpt: 'Aim for 4 to 5-minute showers, or switch to a water-saving showerhead.', time: '1 min', tags: ['water'] },
+
+  /* ---------- Seasonal & Local Eating ---------- */
+  { id: 'a13', title: 'Buy at local farmers\' markets', category: 'Seasonal Eating', icon: '🥕',
+    excerpt: 'Produce harvested at peak seasonality requires less artificial greenhouse heating and long-distance transportation.', time: '1 min', tags: ['food'] },
+  { id: 'a14', title: 'Preserve seasonal abundance', category: 'Seasonal Eating', icon: '🫙',
+    excerpt: 'Freeze, pick, or dry excess fruits and vegetables when they are plentiful to enjoy during off-seasons.', time: '1 min', tags: ['food'] },
+  { id: 'a15', title: 'Plan meals around local crops', category: 'Seasonal Eating', icon: '🗓️',
+    excerpt: 'Check a seasonal produce guide for your region before grocery shopping to choose food grown nearby.', time: '1 min', tags: ['food'] },
+  { id: 'a16', title: 'Store produce properly', category: 'Seasonal Eating', icon: '🥬',
+    excerpt: 'Keep veggies like leafy greens crisp in airtight containers to extend their shelf life and prevent food rot.', time: '1 min', tags: ['food'] },
+
+  /* ---------- Energy Saving ---------- */
+  { id: 'a17', title: 'Unplug "vampire" loads', category: 'Energy Efficiency', icon: '🔌',
+    excerpt: 'Disconnect chargers, microwave clocks, and entertainment devices when not in use to eliminate phantom power consumption.', time: '1 min', tags: ['energy'] },
+  { id: 'a18', title: 'Wash clothes in cold water', category: 'Energy Efficiency', icon: '👕',
+    excerpt: 'Heating water accounts for about 90% of the energy used by a washing machine.', time: '1 min', tags: ['energy'] },
+  { id: 'a19', title: 'Switch to LED bulbs', category: 'Energy Efficiency', icon: '💡',
+    excerpt: 'Replace traditional incandescent bulbs with LEDs, which use up to 75% less energy and last much longer.', time: '1 min', tags: ['energy'] },
+  { id: 'a20', title: 'Optimize home temperature', category: 'Energy Efficiency', icon: '🌡️',
+    excerpt: 'Lower your thermostat by 1–2°C in winter or raise it by 1–2°C in summer to cut HVAC energy demands.', time: '1 min', tags: ['energy'] },
+
+  /* ---------- Waste Management ---------- */
+  { id: 'a21', title: 'Follow the "4 Rs"', category: 'Waste & Recycling', icon: '♻️',
+    excerpt: 'Prioritize Refuse, Reduce, and Reuse before relying on Recycling.', time: '1 min', tags: ['waste'] },
+  { id: 'a22', title: 'Set up a kitchen compost bin', category: 'Waste & Recycling', icon: '🍂',
+    excerpt: 'Separate food scraps, coffee grounds, and paper products from general waste to reduce landfill methane emissions.', time: '1 min', tags: ['waste'] },
+  { id: 'a23', title: 'Carry a zero-waste kit', category: 'Waste & Recycling', icon: '👜',
+    excerpt: 'Keep reusable bags, a stainless steel water bottle, and compact cutlery in your everyday bag.', time: '1 min', tags: ['waste'] },
+  { id: 'a24', title: 'Rinse recyclables', category: 'Waste & Recycling', icon: '🧴',
+    excerpt: 'Briefly rinse plastic, glass, and metal containers before placing them in recycling bins to avoid contaminating entire loads.', time: '1 min', tags: ['waste'] }
 
 export const CATEGORIES = [
   'All',
