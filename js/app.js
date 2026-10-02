@@ -488,3 +488,4 @@ else if (page === 'impact') initImpact();
 else if (page === 'resources') initResources();
 else if (page === 'profile') initProfile();
 else initShared();
+import('./features.js').catch((e) => console.warn('features.js failed', e));
