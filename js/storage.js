@@ -101,8 +101,10 @@ export function logAction(state, action) {
       // same day, streak stays
     } else if (diff === 1) {
       state.streak.current += 1;
+      earnFreeze(state.streak.current);
+    } else if (diff === 2 && spendFreeze()) {
+      state.streak.current += 1; // a freeze covered the one missed day
     } else {
-      // missed days – restart streak but keep best
       state.streak.current = 1;
     }
   }
