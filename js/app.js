@@ -88,7 +88,7 @@ function getTodaysActions() {
     const j = n % (i + 1);
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  return shuffled.slice(0, 3);
+  return shuffled;
 }
 
 /* ========== INDEX (Dashboard) ========== */
