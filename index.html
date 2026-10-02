@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ecosphere – Track small daily eco habits and watch your impact grow." />
+  <title>Ecosphere – Daily Eco Habits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/upgrade.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+</head>
+<body data-page="dashboard">
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🌿</span>
+        Ecosphere
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="menu-btn" aria-label="More options" aria-haspopup="true" aria-expanded="false">⋮</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <div id="guest-banner" class="guest-banner" style="display:none">
+        <p>Try it as a guest — enter a name to save your streak!</p>
+        <div style="display:flex;gap:0.5rem;align-items:center">
+          <input id="guest-name" type="text" placeholder="Your name" maxlength="24"
+            style="padding:0.5rem 0.75rem;border-radius:8px;border:1px solid var(--border);font-family:inherit;background:var(--white);color:var(--text)" />
+          <button id="save-name-btn" class="btn btn-primary btn-sm">Save</button>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1 class="greeting" id="greeting">Good day, <span>Eco Friend</span> 🌿</h1>
+          <p class="subtitle">Today’s micro-actions. One click to log — every bit counts.</p>
+
+          <div class="actions-grid" id="actions-grid">
+            <!-- filled by JS -->
+          </div>
+        </div>
+
+        <div class="tree-panel eco-table-wrap">
+          <table class="eco-table">
+            <caption>Your Ecosystem</caption>
+            <tbody>
+              <tr><th scope="row">Tree</th><td><div class="tree-canvas" id="tree-canvas"></div></td></tr>
+              <tr><th scope="row">Stage</th><td id="tree-stage-name">Seedling</td></tr>
+              <tr><th scope="row">Status</th><td id="tree-status">Thriving 🌱</td></tr>
+              <tr><th scope="row">Progress</th><td><div class="progress-bar"><div class="progress-fill" id="tree-progress-fill" style="width:0%"></div></div><div class="progress-text" id="tree-progress-text">0 growth points</div></td></tr>
+              <tr><th scope="row">Current streak</th><td id="eco-streak">0 days</td></tr>
+              <tr><th scope="row">Actions logged</th><td id="eco-actions">0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-value" id="stat-streak">0</div>
+        <div class="stat-label">Day streak 🔥</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="stat-actions">0</div>
+        <div class="stat-label">Actions logged</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="stat-impact">0</div>
+        <div class="stat-label" id="stat-impact-label">impact so far</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col"><h3>🌿 Ecosphere</h3><p>Small actions, real impact.</p></div>
+      <div class="footer-col"><h3>Pages</h3><ul><li><a href="index.html">index.html</a></li><li><a href="impact.html">impact.html</a></li><li><a href="resources.html">resources.html</a></li><li><a href="profile.html">profile.html</a></li></ul></div>
+      <div class="footer-col"><h3>Project files</h3><ul><li><a href="css/styles.css">css/styles.css</a></li><li><a href="css/upgrade.css">css/upgrade.css</a></li><li><a href="js/ecosphere.js">js/ecosphere.js</a></li><li><a href="js/app.js">js/app.js</a></li><li><a href="js/data.js">js/data.js</a></li><li><a href="js/storage.js">js/storage.js</a></li><li><a href="js/ui.js">js/ui.js</a></li><li><a href="README.md">README.md</a></li></ul></div>
+      
+    </div>
+    <div class="footer-bottom">Made by Vedansh Prakash Mishra</div>
+  </footer>
+
+  <script src="js/ecosphere.js" defer></script>
+</body>
+</html>

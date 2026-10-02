@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Your Ecosphere profile, settings, and shareable impact card." />
+  <title>Profile – Ecosphere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/upgrade.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+</head>
+<body data-page="profile">
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🌿</span>
+        Ecosphere
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="menu-btn" aria-label="More options" aria-haspopup="true" aria-expanded="false">⋮</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container section">
+    <div class="profile-header">
+      <div class="avatar" id="avatar">E</div>
+      <div class="profile-info">
+        <h1 id="profile-name">Eco Friend</h1>
+        <p class="profile-meta" id="profile-meta">Joined —</p>
+        <div class="level-badge" id="level-badge">🌳 Seedling</div>
+        <button id="edit-name-btn" class="btn btn-secondary btn-sm" style="margin-top:0.6rem">Edit name</button>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Profile sections">
+      <button class="tab-btn" role="tab" data-panel="panel-overview" aria-selected="true">Overview</button>
+      <button class="tab-btn" role="tab" data-panel="panel-prefs" aria-selected="false" tabindex="-1">Preferences</button>
+      <button class="tab-btn" role="tab" data-panel="panel-data" aria-selected="false" tabindex="-1">Data</button>
+    </div>
+    <section id="panel-overview" role="tabpanel">
+      <div class="profile-table-wrap"><table class="profile-table"><caption>Profile details</caption><tbody id="profile-rows"></tbody></table></div>
+      <div class="share-card">
+        <h3>Share your impact</h3>
+        <p>Show the world your eco streak</p>
+        <div class="share-stats" id="share-stats"></div>
+        <button id="share-btn" class="btn btn-secondary" style="background:white;color:#1E3A2B">Share / Copy summary</button>
+      </div>
+    </section>
+    <section id="panel-prefs" role="tabpanel" hidden>
+      <div class="settings-grid">
+        <div class="setting-row"><span class="setting-label">Sound effects</span><label class="toggle"><input type="checkbox" id="toggle-sound" checked /><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><span class="setting-label">Dark mode</span><label class="toggle"><input type="checkbox" id="toggle-dark" /><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><span class="setting-label">Daily reminders (while Ecosphere is open)</span><label class="toggle"><input type="checkbox" id="toggle-reminders" /><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><label class="setting-label" for="reminder-time">Reminder time</label><input type="time" id="reminder-time" value="09:00" /></div>
+      </div>
+    </section>
+    <section id="panel-data" role="tabpanel" hidden>
+      <div class="settings-grid">
+        <div class="setting-row"><span class="setting-label">Export my data</span><button id="export-btn" class="btn btn-outline btn-sm">Download JSON</button></div>
+        <div class="setting-row"><span class="setting-label">Import data</span><button id="import-btn" class="btn btn-outline btn-sm">Choose JSON file</button><input type="file" id="import-file" accept="application/json,.json" hidden /></div>
+        <div class="setting-row"><span class="setting-label">Reset all progress</span><button id="reset-btn" class="btn btn-danger btn-sm">Reset</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col"><h3>🌿 Ecosphere</h3><p>Small actions, real impact.</p></div>
+      <div class="footer-col"><h3>Pages</h3><ul><li><a href="index.html">index.html</a></li><li><a href="impact.html">impact.html</a></li><li><a href="resources.html">resources.html</a></li><li><a href="profile.html">profile.html</a></li></ul></div>
+      <div class="footer-col"><h3>Project files</h3><ul><li><a href="css/styles.css">css/styles.css</a></li><li><a href="css/upgrade.css">css/upgrade.css</a></li><li><a href="js/ecosphere.js">js/ecosphere.js</a></li><li><a href="js/app.js">js/app.js</a></li><li><a href="js/data.js">js/data.js</a></li><li><a href="js/storage.js">js/storage.js</a></li><li><a href="js/ui.js">js/ui.js</a></li><li><a href="README.md">README.md</a></li></ul></div>
+      
+    </div>
+    <div class="footer-bottom">Made by Vedansh Prakash Mishra</div>
+  </footer>
+
+  <script src="js/ecosphere.js" defer></script>
+</body>
+</html>
