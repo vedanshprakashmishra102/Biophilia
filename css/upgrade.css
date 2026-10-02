@@ -127,3 +127,21 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
 @keyframes float { 50% { transform: translate(6px, -8px); } }
 .bio-fab { position: fixed; right: 1rem; z-index: 150; width: 3.2rem; height: 3.2rem; border-radius: 50%; border: 0; font-size: 1.4rem; background: var(--terracotta); color: #fff; box-shadow: 0 10px 22px rgba(30, 58, 43, 0.25); cursor: pointer; transition: transform 0.25s; }
 .bio-fab:hover { transform: translateY(-2px); }
+/* Features batch 2 */
+.bio-chip { margin: 0.75rem 0; padding: 0.6rem 1.1rem; border-radius: 50px; background: rgba(122, 158, 126, 0.18); color: var(--forest); font-size: 0.9rem; }
+.bio-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem; margin: 0.75rem 0 1rem; }
+.bio-list { list-style: none; padding: 0; margin-top: 1rem; }
+.bio-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0.6rem 0; border-top: 1px solid var(--border); }
+#bio-report { display: none; }
+@media print {
+  @page { margin: 14mm; }
+  body { background: #fff !important; }
+  body > *:not(#bio-report) { display: none !important; }
+  #bio-report { display: block; color: #1E3A2B; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #bio-report .rep-head { background: #1E3A2B; color: #fff; padding: 1.5rem 2rem; border-radius: 20px; margin-bottom: 1.5rem; }
+  #bio-report .rep-head h1, #bio-report .rep-head p { color: #fff; margin: 0; }
+  #bio-report h2 { color: #1E3A2B; }
+  #bio-report table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  #bio-report th, #bio-report td { padding: 0.7rem; text-align: left; border-bottom: 1px solid #CBD8CD; color: #1E3A2B; }
+  #bio-report .rep-foot { margin-top: 2rem; text-align: center; color: #4A6B53; }
+}
