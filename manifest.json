@@ -1,0 +1,10 @@
+{
+  "name": "Biophilia",
+  "short_name": "Biophilia",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F7F4",
+  "theme_color": "#1E3A2B",
+  "icons": [{ "src": "icon.svg", "sizes": "192x192 512x512", "type": "image/svg+xml", "purpose": "any" }]
+}
