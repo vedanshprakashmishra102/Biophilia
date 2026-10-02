@@ -83,6 +83,8 @@ export const DAILY_ACTIONS = [
   }
 ];
 
+try { JSON.parse(localStorage.getItem('bio_custom') || '[]').forEach((h) => DAILY_ACTIONS.push(h)); } catch {}
+
 export const TREE_STAGES = [
   { name: 'Seedling', minPoints: 0, maxPoints: 4 },
   { name: 'Sprout', minPoints: 5, maxPoints: 11 },
