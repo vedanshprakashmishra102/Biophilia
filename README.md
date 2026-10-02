@@ -1,4 +1,4 @@
-# Ecosphere – Eco Habit Tracker & Micro-Pledge Platform
+# Biophilia – Eco Habit Tracker & Micro-Pledge Platform
 
 A lightweight, client-side website where users commit to and track small, high-impact daily actions that help the environment.
 

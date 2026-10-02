@@ -1,4 +1,4 @@
-/* ===== ECOSPHERE – UI Helpers ===== */
+/* ===== BIOPHILIA – UI Helpers ===== */
 
 export function $(sel, ctx = document) {
   return ctx.querySelector(sel);

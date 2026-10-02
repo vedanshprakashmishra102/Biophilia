@@ -1,5 +1,5 @@
 (function(){'use strict';
-/* ===== ECOSPHERE – Static Data & Config ===== */
+/* ===== BIOPHILIA – Static Data & Config ===== */
 
 const DAILY_ACTIONS = [
   {
@@ -360,7 +360,7 @@ function getProgressToNext(points) {
     next: stage.maxPoints + 1
   };
 }
-/* ===== ECOSPHERE – Local Storage Layer ===== */
+/* ===== BIOPHILIA – Local Storage Layer ===== */
 
 const STORAGE_KEY = 'ecosphere_v1';
 
@@ -524,7 +524,7 @@ function resetData() {
 function exportData(state) {
   return JSON.stringify(state, null, 2);
 }
-/* ===== ECOSPHERE – UI Helpers ===== */
+/* ===== BIOPHILIA – UI Helpers ===== */
 
 function $(sel, ctx = document) {
   return ctx.querySelector(sel);
@@ -642,7 +642,7 @@ function openDialog({ title, body, confirmText = 'Save', danger = false, onConfi
   ov.querySelector('[data-ok]').addEventListener('click', ok);
   (ov.querySelector('input') || ov.querySelector('[data-ok]')).focus();
 }
-/* ===== ECOSPHERE – Main Application ===== */
+/* ===== BIOPHILIA – Main Application ===== */
 
 let state = loadState();
 
@@ -668,9 +668,9 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&
 function flipTheme() { applyTheme(toggleDark(state)); }
 
 async function shareSummary() {
-  const text = `I've logged ${state.totalActions} eco-actions and saved ${state.totals.co2.toFixed(1)} kg CO₂ with Ecosphere! 🌱 Current streak: ${state.streak.current} days.`;
+  const text = `I've logged ${state.totalActions} eco-actions and saved ${state.totals.co2.toFixed(1)} kg CO₂ with Biophilia! 🌱 Current streak: ${state.streak.current} days.`;
   try {
-    if (navigator.share) await navigator.share({ title: 'My Ecosphere Impact', text });
+    if (navigator.share) await navigator.share({ title: 'My Biophilia Impact', text });
     else { await navigator.clipboard.writeText(text); toast('Impact summary copied to clipboard!'); }
   } catch (e) { if (e.name !== 'AbortError') toast('Could not share — try again.', 'info'); }
 }
@@ -713,7 +713,7 @@ function startReminders() {
     const now = new Date(), hm = now.toTimeString().slice(0, 5), day = now.toISOString().slice(0, 10);
     if (hm === (state.settings.reminderTime || '09:00') && localStorage.getItem('ecosphere_last_reminder') !== day) {
       localStorage.setItem('ecosphere_last_reminder', day);
-      new Notification('Ecosphere 🌿', { body: 'Time for today’s micro-actions!' });
+      new Notification('Biophilia 🌿', { body: 'Time for today’s micro-actions!' });
     }
   }, 30000);
 }
@@ -1113,7 +1113,7 @@ function initProfile() {
       const data = JSON.parse(await file.files[0].text());
       if (!data.user || !data.totals || !data.streak) throw new Error('bad');
       saveState(data); toast('Data imported. Refreshing…'); setTimeout(() => location.reload(), 800);
-    } catch { toast('That file is not a valid Ecosphere export.', 'info'); }
+    } catch { toast('That file is not a valid Biophiilical export.', 'info'); }
     file.value = '';
   });
   $('#reset-btn').addEventListener('click', () => openDialog({

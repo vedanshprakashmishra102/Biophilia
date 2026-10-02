@@ -1,4 +1,4 @@
-/* ===== ECOSPHERE – Local Storage Layer ===== */
+/* ====  BIOPHILIA – Local Storage Layer ===== */
 
 const STORAGE_KEY = 'ecosphere_v1';
 

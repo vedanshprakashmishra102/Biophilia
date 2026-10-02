@@ -1,4 +1,4 @@
-/* ===== ECOSPHERE – Static Data & Config ===== */
+/* =====  BIOPHILIA – Static Data & Config ===== */
 
 export const DAILY_ACTIONS = [
   {
