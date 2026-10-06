@@ -537,6 +537,5 @@ Ideas for the future:
 - **Created by:** Vedansh Prakash Mishra
 - **Fonts:** Playfair Display and Plus Jakarta Sans (Google Fonts)
 - **Weather data:** [Open-Meteo](https://open-meteo.com/) (free, no key needed)
-- **License:** none has been chosen yet, so all rights are reserved by default. Add a `LICENSE` file (for example MIT) if you want others to reuse the project.
-
+- **License:** MIT License
 Built with 💚 for the planet.
