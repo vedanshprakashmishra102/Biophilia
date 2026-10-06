@@ -4,3 +4,4 @@ cd "$(dirname "$0")/js" || exit 1
 { echo "(function(){'use strict';"
   for f in data storage ui app; do sed -E '/^import /d; s/^export (async )?(function|const|let|class) /\1\2 /' "$f.js"; done
   echo "})();"; } > ecosphere.js && node --check ecosphere.js && echo "built js/ecosphere.js"
+( cd .. && find . -type f ! -path './.git/*' ! -path './node_modules/*' ! -name '.DS_Store' ! -name '*.zip' | sed 's|^\./||' | sort > files.txt )
