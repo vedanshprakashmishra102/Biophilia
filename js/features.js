@@ -25,9 +25,20 @@ function track() {
 
 /* ---- Installable app ---- */
 function pwa() {
-  const l = document.createElement('link'); l.rel = 'manifest'; l.href = 'manifest.json'; document.head.appendChild(l);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW failed', e));
+  if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) return; // already installed
+  let deferred = null;
+  const b = fab('⬇️', 'Add Biophilia to your home screen', '9rem');
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  b.onclick = async () => {
+    if (deferred) { deferred.prompt(); await deferred.userChoice; deferred = null; return; }
+    toast(ios ? 'On iPhone: tap the Share button, then “Add to Home Screen”.'
+      : 'Open the browser menu (⋮) and tap “Install app” or “Add to Home screen”.', 'info');
+  };
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferred = e; });
+  window.addEventListener('appinstalled', () => { b.hidden = true; toast('Installed! Open Biophilia from your home screen 🌿'); });
 }
+
 
 /* ---- Nature soundscapes (synthesized, no audio files) ---- */
 function sounds() {
@@ -106,24 +117,61 @@ function weatherInit() {
 /* ---- Voice logging ---- */
 function voice() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) return;
-  const stem = (t) => t.toLowerCase().replace(/[^a-z ]/g, ' ').split(/\s+/).filter((x) => x.length > 2).map((x) => x.slice(0, 4));
-  fab('🎤', 'Log an action by voice', '5rem').onclick = () => {
-    const r = new SR(); r.lang = 'en-IN';
-    r.onresult = (e) => {
-      const heard = new Set(stem(e.results[0][0].transcript));
-      let best = null, top = 0;
-      DAILY_ACTIONS.forEach((a) => {
-        const sc = stem(a.title).filter((x) => heard.has(x)).length * 3 + stem(a.desc).filter((x) => heard.has(x)).length;
-        if (sc > top) { top = sc; best = a; }
-      });
-      const btn = best && top >= 3 && $(`.action-card[data-id="${best.id}"] button`);
-      if (!btn) return toast('Sorry, I could not match that to an action.', 'info');
-      if (btn.disabled) return toast(best.title + ' is already logged today ✓', 'info');
+  const EXTRA = {
+    'skip-meat': 'vegetarian vegan veggie salad lunch dinner',
+    'unplug': 'plug unplugged charger chargers devices socket',
+    'short-shower': 'bath bathing quick',
+    'reuse-bottle': 'flask refill refilled',
+    'air-dry': 'dry dried laundry line sun hung',
+    'no-food-waste': 'finished leftovers wasted',
+    'walk-bike': 'walked biked cycle cycled work school office',
+    'led-lights': 'light lamp lamps bulb bulbs',
+    'compost': 'composted peels peel garden',
+    'cold-wash': 'washed washing laundry machine'
+  };
+  const STOP = new Set(['the', 'and', 'for', 'with', 'you', 'your', 'all', 'one', 'off', 'use', 'used', 'take', 'took', 'did', 'have', 'had', 'was', 'are', 'this', 'that', 'from', 'some', 'today', 'just', 'instead', 'water', 'short']);
+  const stem = (t) => String(t || '').toLowerCase().split(/[^\p{L}\p{M}\p{N}]+/u)
+    .filter((w) => w.length > 2 && !STOP.has(w)).map((w) => w.slice(0, 4));
+  const score = (said, card) => {
+    const t = new Set(stem(card.title)), k = new Set(stem(EXTRA[card.id]));
+    let s = 0; new Set(stem(said)).forEach((w) => { s += t.has(w) ? 3 : k.has(w) ? 2 : 0; });
+    return s;
+  };
+  const ERR = {
+    'not-allowed': 'Microphone is blocked. Allow it in your browser’s site settings and use an https:// link.',
+    'service-not-allowed': 'Microphone is blocked. Allow it in your browser’s site settings and use an https:// link.',
+    'no-speech': 'I did not hear anything. Tap 🎤 and speak right away.',
+    'audio-capture': 'No microphone was found on this device.',
+    'network': 'Voice needs internet (the browser sends audio to Google). Brave blocks this.',
+    'language-not-supported': 'This browser cannot listen in that language.'
+  };
+  let rec = null;
+  const b = fab('🎤', 'Log an action by voice', '5rem');
+  b.onclick = () => {
+    if (rec) { try { rec.stop(); } catch {} return; }
+    if (!SR) return toast('Voice is not supported in this browser. Please use Chrome or Edge.', 'info');
+    if (!window.isSecureContext) return toast('Voice only works on an https:// page, not http:// or a double-clicked file.', 'info');
+    const cards = Array.from(document.querySelectorAll('.action-card[data-id]')).map((c) => ({
+      c, id: c.dataset.id, title: (c.querySelector('.action-title') || c).textContent.trim()
+    }));
+    if (!cards.length) return toast('Open the Dashboard to log actions by voice.', 'info');
+    rec = new SR();
+    rec.lang = localStorage.getItem('bio_lang') === 'hi' ? 'hi-IN' : 'en-IN';
+    rec.maxAlternatives = 3; rec.interimResults = false; rec.continuous = false;
+    rec.onstart = () => { b.textContent = '🔴'; toast('Listening… say “I walked to work”', 'info'); };
+    rec.onresult = (e) => {
+      const alts = Array.from(e.results[0]).map((a) => a.transcript);
+      const ranked = cards.map((card, i) => [Math.max(...alts.map((t) => score(t, card))), i]).sort((x, y) => y[0] - x[0]);
+      const [top, i] = ranked[0], next = ranked[1] ? ranked[1][0] : 0;
+      if (top < 3) return toast('I heard “' + alts[0] + '” but could not match it to an action.', 'info');
+      if (top === next) return toast('I heard “' + alts[0] + '”. Say a little more so I can tell which action.', 'info');
+      const btn = cards[i].c.querySelector('button');
+      if (!btn || btn.disabled) return toast(cards[i].title + ' is already logged today ✓', 'info');
       btn.click();
     };
-    r.onerror = () => toast('Could not hear that. Check microphone permission.', 'info');
-    r.start(); toast('Listening… say “I air-dried my laundry”', 'info');
+    rec.onerror = (e) => { if (e.error !== 'aborted') toast(ERR[e.error] || 'Voice error: ' + e.error, 'info'); };
+    rec.onend = () => { rec = null; b.textContent = '🎤'; };
+    try { rec.start(); } catch { rec = null; toast('Could not start the microphone. Reload the page and try again.', 'info'); }
   };
 }
 
