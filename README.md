@@ -538,4 +538,5 @@ Ideas for the future:
 - **Fonts:** Playfair Display and Plus Jakarta Sans (Google Fonts)
 - **Weather data:** [Open-Meteo](https://open-meteo.com/) (free, no key needed)
 - **License:** MIT License
+- 
 Built with 💚 for the planet.
