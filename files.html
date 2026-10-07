@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse and read every file in the Biophilia project." />
+  <title>Project files – Biophilia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/upgrade.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E3A2B" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Biophilia" />
+  <style>
+    .fb { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .fb { grid-template-columns: 17rem 1fr; align-items: start; } }
+    .fb-list { list-style: none; margin: 0; padding: .5rem; display: flex; flex-wrap: wrap; gap: .4rem;
+      max-height: 11rem; overflow: auto; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    @media (min-width: 800px) { .fb-list { flex-direction: column; flex-wrap: nowrap; max-height: 70vh; } }
+    .fb-list button { font: inherit; font-size: .85rem; cursor: pointer; text-align: left; width: 100%;
+      padding: .45rem .7rem; border-radius: 999px; border: 1px solid var(--border); background: var(--cream-dark); color: var(--text); }
+    @media (max-width: 799px) { .fb-list button { width: auto; } }
+    .fb-list button.on { background: var(--forest); color: var(--cream); border-color: var(--forest); }
+    .fb-view { min-width: 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .fb-head { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: space-between; padding: .75rem 1rem; border-bottom: 1px solid var(--border); }
+    .fb-head h2 { font-size: 1rem; margin: 0; word-break: break-all; }
+    .fb-head p { margin: .15rem 0 0; font-size: .8rem; color: var(--text-muted); }
+    .fb-copy { font: inherit; font-size: .8rem; cursor: pointer; padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--border); background: var(--cream-dark); color: var(--text); }
+    .fb-view pre { margin: 0; padding: 1rem; overflow: auto; max-height: 70vh; background: var(--cream-dark); }
+    .fb-view code { font: .78rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text); white-space: pre; tab-size: 2; }
+    .fb-view img { display: block; max-width: 100%; max-height: 60vh; margin: 1rem auto; }
+    .fb-view img[hidden] { display: none; }
+  </style>
+</head>
+<body data-page="files">
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🌿</span>
+        Biophilia
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="menu-btn" aria-label="More options" aria-haspopup="true" aria-expanded="false">⋮</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container section">
+    <h1 class="section-title">📁 Project files</h1>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.95rem">
+      Tap a file to read its code. Images are shown as pictures.
+    </p>
+
+    <div class="fb">
+      <ul class="fb-list" id="file-list"><li>Loading…</li></ul>
+      <section class="fb-view">
+        <div class="fb-head">
+          <div><h2 id="file-title">Loading…</h2><p id="file-note"></p></div>
+          <button type="button" class="fb-copy" id="file-copy">📋 Copy code</button>
+        </div>
+        <img id="file-img" alt="" hidden />
+        <pre><code id="file-code"></code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col"><h3>🌿 Biophilia</h3><p>Small actions, real impact.</p></div>
+      <div class="footer-col"><h3>Pages</h3><ul><li><a href="index.html">index.html</a></li><li><a href="impact.html">impact.html</a></li><li><a href="resources.html">resources.html</a></li><li><a href="profile.html">profile.html</a></li></ul></div>
+      <div class="footer-col"><h3>Project files</h3><ul><li><a href="css/styles.css">css/styles.css</a></li><li><a href="css/upgrade.css">css/upgrade.css</a></li><li><a href="js/ecosphere.js">js/ecosphere.js</a></li><li><a href="js/app.js">js/app.js</a></li><li><a href="js/data.js">js/data.js</a></li><li><a href="js/storage.js">js/storage.js</a></li><li><a href="js/ui.js">js/ui.js</a></li><li><a href="README.md">README.md</a></li></ul></div>
+      <div class="footer-col"><h3>Kindly visit these websites</h3><p>I do not own these.</p><ul><li><a href="https://share.google/15w63czY6qxXHvjqw" target="_blank" rel="noopener noreferrer">Recommended website 1</a></li><li><a href="https://share.google/NGid4qabq3ayeUhfJ" target="_blank" rel="noopener noreferrer">Recommended website 2</a></li><li><a href="https://share.google/x1lKT3zT7YRUZHwye" target="_blank" rel="noopener noreferrer">Recommended website 3</a></li><li><a href="https://share.google/LVyFmpF3K6l2Iz0PU" target="_blank" rel="noopener noreferrer">Recommended website 4</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">Made by Vedansh Prakash Mishra</div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script>
+    document.getElementById('file-copy').addEventListener('click', async function () {
+      var b = this, t = document.getElementById('file-code').textContent;
+      try { await navigator.clipboard.writeText(t); b.textContent = '✅ Copied'; }
+      catch (e) { var r = document.createRange(); r.selectNodeContents(document.getElementById('file-code')); var x = getSelection(); x.removeAllRanges(); x.addRange(r); b.textContent = 'Selected – press copy'; }
+      setTimeout(function () { b.textContent = '📋 Copy code'; }, 1800);
+    });
+  </script>
+</body>
+</html>
